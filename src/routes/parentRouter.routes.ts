@@ -1,4 +1,4 @@
-import { validationHandler, validators } from "./../middleware/validator";
+import { validationHandler, validators } from "../middleware/validator";
 import express, { Router } from "express";
 import { priceTrackingController } from "@controller/priceTracking.controller";
 

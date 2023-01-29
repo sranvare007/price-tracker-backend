@@ -3,15 +3,16 @@ import { auditLogMiddleware } from "./middleware/auditLog";
 import { CreateError } from "./middleware/errorHandlers";
 import express, { Application, NextFunction, Request, Response } from "express";
 import cors from "cors";
-import { router } from "./routes";
+import { router } from "./routes/parentRouter.routes";
 import { HandleError } from "@middleware/errorHandlers";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import { Logger } from "@utils/logger.utils";
+import { trackProductPrices } from "./helpers/trackingJob.helper";
 
 dotenv.config({});
 
-const uri = `mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@cluster0.hhysvmt.mongodb.net/?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@cluster0.hhysvmt.mongodb.net/trackinginfo?retryWrites=true&w=majority`;
 
 mongoose
   .connect(uri, {})
@@ -34,3 +35,7 @@ app.use(router);
 app.use((err: CreateError, req: Request, res: Response, next: NextFunction) => {
   HandleError(err, req, res, next);
 });
+
+setInterval(() => {
+  trackProductPrices();
+}, 10000);

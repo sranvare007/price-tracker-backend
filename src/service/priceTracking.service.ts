@@ -12,7 +12,7 @@ export const priceTrackingService = async (
     triggerPrice,
     emailId,
     isPriceTriggered: false,
-    createdAt: new Date().toString(),
+    createdAt: new Date().toISOString(),
   });
   const insertResponse = await priceTrackingInfo.save();
   if (!insertResponse) {

@@ -10,7 +10,6 @@ export const priceTrackingController = async (
   try {
     const { productUrl, triggerPrice, emailId } = req.body;
     const data = await priceTrackingService(productUrl, triggerPrice, emailId);
-
     res.status(200).send(data);
   } catch (error: any) {
     Logger.error(`Error logging in: ${error}`);
