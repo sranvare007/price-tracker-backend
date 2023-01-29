@@ -13,6 +13,21 @@ export const validators = {
       .toLowerCase()
       .withMessage("Password is required"),
   ],
+  priceTrackingInfoValidator: [
+    check("productUrl")
+      .exists()
+      .notEmpty()
+      .withMessage("Product Url is required"),
+    check("triggerPrice")
+      .exists()
+      .isNumeric()
+      .withMessage("Trigger Price is required"),
+    check("emailId")
+      .exists()
+      .notEmpty()
+      .isEmail()
+      .withMessage("Valid Email id is required"),
+  ],
 };
 
 export const validationHandler =
