@@ -19,8 +19,8 @@ export const validators = {
       .exists()
       .notEmpty()
       .withMessage("Product Url is required")
-      .custom((url) => {
-        return getECommerceBrand(url);
+      .custom(async (url) => {
+        return await getECommerceBrand(url);
       }),
     check("triggerPrice")
       .exists()

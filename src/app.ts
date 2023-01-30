@@ -38,4 +38,4 @@ app.use((err: CreateError, req: Request, res: Response, next: NextFunction) => {
 
 setInterval(() => {
   trackProductPrices();
-}, 3600000);
+}, parseInt(process.env.PRICE_TRACK_INTERVAL as string));

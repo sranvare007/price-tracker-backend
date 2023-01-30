@@ -16,7 +16,7 @@ export const getProductPrice = async (url: string) => {
   const html = response.data;
   const $ = load(html);
 
-  const ecommBrand = getECommerceBrand(url);
+  const ecommBrand = await getECommerceBrand(url);
   if (ecommBrand.toUpperCase() == globalConstants.ECOMMERCE_BRAND["flipkart"]) {
     const productCurrentPrice = $("div._30jeq3 _16Jk6d")
       .text()
@@ -55,7 +55,7 @@ export const getProductName = async (url: string) => {
   const html = response.data;
   const $ = load(html);
 
-  const ecommBrand = getECommerceBrand(url);
+  const ecommBrand = await getECommerceBrand(url);
   if (ecommBrand.toUpperCase() == globalConstants.ECOMMERCE_BRAND["flipkart"]) {
     const productName = $("span.B_NuCI").text();
     return productName;
