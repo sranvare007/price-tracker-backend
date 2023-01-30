@@ -32,6 +32,15 @@ export const validators = {
       .isEmail()
       .withMessage("Valid Email id is required"),
   ],
+  urlValidator: [
+    check("productUrl")
+      .exists()
+      .notEmpty()
+      .withMessage("Product Url is required")
+      .custom(async (url) => {
+        return await getECommerceBrand(url);
+      }),
+  ],
 };
 
 export const validationHandler =
