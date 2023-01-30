@@ -1,3 +1,4 @@
+import { globalConstants } from "./../constants/constants";
 import { NextFunction, Request, Response } from "express";
 
 export class CreateError extends Error {
@@ -56,6 +57,8 @@ export const HandleError = (
   const status = error.status;
   const message = error.serverMessage;
   return res.status(status).send({
+    statusCode: status,
+    status: globalConstants.STATUS.FAILED,
     message,
   });
 };

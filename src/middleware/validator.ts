@@ -1,3 +1,4 @@
+import { getECommerceBrand } from "./../helpers/brand.helper";
 import express from "express";
 import { check, ValidationChain, validationResult } from "express-validator";
 import { CreateError } from "./errorHandlers";
@@ -17,7 +18,10 @@ export const validators = {
     check("productUrl")
       .exists()
       .notEmpty()
-      .withMessage("Product Url is required"),
+      .withMessage("Product Url is required")
+      .custom((url) => {
+        return getECommerceBrand(url);
+      }),
     check("triggerPrice")
       .exists()
       .isNumeric()

@@ -1,0 +1,5 @@
+export const getFormattedEmail = (productName: string, productUrl: string) => {
+  return `<div style="position: relative">
+  <div style=" position: absolute; width: 100%; height: 100vh; display: flex; flex-direction: column; align-items: center; background-color: #645CBB; " > <p style=" font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-size: xx-large; color: #fff; margin: 30px auto; " > Trigger price reached for the product ${productName}! </p> <p style=" font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-size: large; color: #fff; margin: 50px 0px 0px 0px; " > Product you had added to be tracked with name ${productName} has reached it's trigger price. Check it out at: <a style=" font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-size: large; color: #fff; " href="${productUrl}" target="_blank" ><b>${productName}</b></a > </p> </div>
+  </div>`;
+};

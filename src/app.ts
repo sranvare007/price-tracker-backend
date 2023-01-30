@@ -38,4 +38,4 @@ app.use((err: CreateError, req: Request, res: Response, next: NextFunction) => {
 
 setInterval(() => {
   trackProductPrices();
-}, 10000);
+}, 3600000);
