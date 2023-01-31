@@ -12,11 +12,11 @@ export const urlValidationController = async (
     const { productUrl } = req.body;
     const productDetails = await urlValidationService(productUrl);
     res.status(200).send({
-      staus: globalConstants.STATUS.SUCCESS,
+      status: globalConstants.STATUS.SUCCESS,
       message: productDetails,
     });
   } catch (error: any) {
     Logger.error(`Error validating URL in: ${error}`);
-    next(error.message);
+    next(error);
   }
 };

@@ -13,6 +13,6 @@ export const priceTrackingController = async (
     res.status(200).send(data);
   } catch (error: any) {
     Logger.error(`Error adding price tracker in: ${error}`);
-    next(error.message);
+    next(error);
   }
 };
