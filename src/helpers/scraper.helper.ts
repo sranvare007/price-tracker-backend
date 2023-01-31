@@ -7,10 +7,10 @@ import { getECommerceBrand } from "./brand.helper";
 export const getProductPrice = async (url: string) => {
   const randomUserAgentIndex =
     Math.random() * (globalConstants.USER_AGENT_LIST.length - 0) + 0;
-
+  const randomUserAgentIndexInt = Number(randomUserAgentIndex.toFixed());
   const response = await axios.get(url, {
     headers: {
-      "User-Agent": globalConstants.USER_AGENT_LIST[randomUserAgentIndex],
+      "User-Agent": globalConstants.USER_AGENT_LIST[randomUserAgentIndexInt],
     },
   });
 
@@ -47,9 +47,10 @@ export const getProductPrice = async (url: string) => {
 export const getProductName = async (url: string) => {
   const randomUserAgentIndex =
     Math.random() * (globalConstants.USER_AGENT_LIST.length - 0) + 0;
+  const randomUserAgentIndexInt = Number(randomUserAgentIndex.toFixed());
   const response = await axios.get(url, {
     headers: {
-      "User-Agent": globalConstants.USER_AGENT_LIST[randomUserAgentIndex],
+      "User-Agent": globalConstants.USER_AGENT_LIST[randomUserAgentIndexInt],
     },
   });
 
@@ -76,9 +77,10 @@ export const getProductName = async (url: string) => {
 export const getProductDetails = async (url: string) => {
   const randomUserAgentIndex =
     Math.random() * (globalConstants.USER_AGENT_LIST.length - 0) + 0;
+  const randomUserAgentIndexInt = Number(randomUserAgentIndex.toFixed());
   const response = await axios.get(url, {
     headers: {
-      "User-Agent": globalConstants.USER_AGENT_LIST[randomUserAgentIndex],
+      "User-Agent": globalConstants.USER_AGENT_LIST[randomUserAgentIndexInt],
     },
   });
 
