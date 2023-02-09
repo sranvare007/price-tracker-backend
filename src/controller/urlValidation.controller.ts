@@ -9,7 +9,8 @@ export const urlValidationController = async (
   next: NextFunction
 ) => {
   try {
-    const { productUrl } = req.body;
+    let { productUrl } = req.body;
+    productUrl = productUrl.split("?")[0];
     const productDetails = await urlValidationService(productUrl);
     res.status(200).send({
       status: globalConstants.STATUS.SUCCESS,

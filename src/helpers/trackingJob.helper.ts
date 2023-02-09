@@ -14,12 +14,17 @@ export const trackProductPrices = async () => {
       isPriceTriggered: false,
     });
 
+    if (productsTrackingInfo.length <= 0) {
+      Logger.info(`Product tracking list is empty!`);
+    }
+
     if (!productsTrackingInfo) {
       Logger.error(`Error getting products tracking info!`);
     }
 
     if (productsTrackingInfo.length > 0) {
       productsTrackingInfo.forEach(async (item) => {
+        Logger.info(`Tracking product with id: ${item._id}`);
         const productPrice = await getProductPrice(item.productUrl as string);
         const productName = await getProductName(item.productUrl as string);
         if (Number(productPrice) <= Number(item.triggerPrice)) {

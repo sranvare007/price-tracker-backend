@@ -8,7 +8,8 @@ export const priceTrackingController = async (
   next: NextFunction
 ) => {
   try {
-    const { productUrl, triggerPrice, emailId } = req.body;
+    let { productUrl, triggerPrice, emailId } = req.body;
+    productUrl = productUrl.split("?")[0];
     const data = await priceTrackingService(productUrl, triggerPrice, emailId);
     res.status(200).send(data);
   } catch (error: any) {

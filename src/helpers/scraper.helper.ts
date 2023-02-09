@@ -78,7 +78,8 @@ export const getProductDetails = async (url: string) => {
   const randomUserAgentIndex =
     Math.random() * (globalConstants.USER_AGENT_LIST.length - 0) + 0;
   const randomUserAgentIndexInt = Number(randomUserAgentIndex.toFixed());
-  const response = await axios.get(url, {
+  const formattedUrl = url.split("?")[0];
+  const response = await axios.get(formattedUrl, {
     headers: {
       "User-Agent": globalConstants.USER_AGENT_LIST[randomUserAgentIndexInt],
     },
@@ -88,13 +89,14 @@ export const getProductDetails = async (url: string) => {
   const html = response.data;
   const $ = load(html);
 
-  const ecommBrand = await getECommerceBrand(url);
+  const ecommBrand = await getECommerceBrand(formattedUrl);
   if (ecommBrand.toUpperCase() == globalConstants.ECOMMERCE_BRAND["flipkart"]) {
     const productName = $("span.B_NuCI").text();
     const productPrice = $("div._16Jk6d").text();
     const productImageUrl = $("img._2amPTt").attr("src");
     const productMrp = $("div._2p6lqe").text();
     const productDiscount = $("div._31Dcoz").text();
+
     return {
       productName,
       productPrice,
@@ -128,6 +130,7 @@ export const getProductDetails = async (url: string) => {
         .end()
         .text()
         .replace(/[^0-9%-]/g, "");
+
     return {
       productName,
       productPrice,
